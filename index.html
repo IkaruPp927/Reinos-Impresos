@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Miniaturas y accesorios impresos en 3D para tus aventuras de rol.">
+  <title>Reinos Impresos | Miniaturas 3D</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Reinos Impresos, inicio">
+      <span class="brand-die">d20</span>
+      <span><strong>REINOS IMPRESOS</strong><small>Tus aventuras, pieza por pieza</small></span>
+    </a>
+    <nav>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#como-comprar">Cómo comprar</a>
+      <button class="button button-outline" id="admin-open" type="button">Administrar</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">MINIATURAS · ACCESORIOS · FANTASÍA</p>
+        <h1>Forjá tu próxima <span>aventura.</span></h1>
+        <p>Miniaturas impresas en 3D para Dungeons & Dragons, Pathfinder y tus propios mundos.</p>
+        <a class="button button-gold" href="#catalogo">Explorar catálogo</a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="rune rune-one">ᚱ</div><div class="rune rune-two">ᛟ</div>
+        <div class="dice">20</div>
+        <p>HECHO PARA AVENTUREROS</p>
+      </div>
+    </section>
+
+    <section class="catalog-section" id="catalogo">
+      <div class="section-heading">
+        <div><p class="eyebrow">ENCONTRÁ TU PRÓXIMA PIEZA</p><h2>Catálogo</h2></div>
+        <label class="search-label"><span>Buscar</span><input id="search" type="search" placeholder="Ej. guerrero, dragón…"></label>
+      </div>
+      <div class="filters" id="filters"></div>
+      <div class="product-grid" id="product-grid"></div>
+      <p class="empty-state hidden" id="empty-state">No encontramos productos con esa búsqueda.</p>
+    </section>
+
+    <section class="how-section" id="como-comprar">
+      <p class="eyebrow">FÁCIL Y PERSONALIZADO</p>
+      <h2>¿Cómo comprar?</h2>
+      <div class="steps">
+        <article><span>01</span><h3>Elegí tu pieza</h3><p>Explorá el catálogo y encontrá la miniatura o accesorio que buscás.</p></article>
+        <article><span>02</span><h3>Consultanos</h3><p>Como imprimimos a pedido, confirmamos disponibilidad, tamaño y plazo.</p></article>
+        <article><span>03</span><h3>Coordiná la entrega</h3><p>Organizamos el envío o el retiro y te indicamos cómo pagar.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>© <span id="year"></span> Reinos Impresos</span><span>Impresiones 3D para mundos extraordinarios.</span></footer>
+
+  <dialog id="admin-dialog" class="admin-dialog">
+    <div class="dialog-heading"><div><p class="eyebrow">GESTIÓN LOCAL DE PRUEBA</p><h2>Administrar catálogo</h2></div><button class="icon-button" id="admin-close" aria-label="Cerrar">×</button></div>
+    <div class="notice"><strong>Importante:</strong> esta primera versión guarda los productos solo en este navegador. No es un panel privado seguro ni sincroniza cambios con la web publicada. No ingreses contraseñas ni datos sensibles.</div>
+    <form id="product-form">
+      <input type="hidden" id="product-id">
+      <div class="form-grid">
+        <label>Nombre<input id="product-name" required maxlength="80" placeholder="Ej. Guerrero enano"></label>
+        <label>Categoría<select id="product-category"><option>Miniaturas</option><option>Monstruos</option><option>Accesorios</option><option>Personalizados</option></select></label>
+        <label>Precio (ARS)<input id="product-price" type="number" min="0" step="1" required placeholder="Ej. 8500"></label>
+        <label>Imagen (URL)<input id="product-image" type="url" placeholder="https://…"></label>
+        <label class="full-width">Descripción<textarea id="product-description" rows="3" maxlength="400" placeholder="Tamaño, material, detalles…"></textarea></label>
+      </div>
+      <div class="form-actions"><button class="button button-gold" type="submit" id="save-product">Agregar producto</button><button class="button button-outline hidden" type="button" id="cancel-edit">Cancelar edición</button></div>
+    </form>
+    <h3 class="admin-list-title">Productos cargados en este navegador</h3>
+    <div id="admin-product-list" class="admin-product-list"></div>
+    <button class="button button-outline danger-button" id="reset-demo" type="button">Restaurar catálogo de ejemplo</button>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
